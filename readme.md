@@ -59,7 +59,7 @@ fb.apiRequest("animals", true, "blep", true).then(res => console.log(res));
 }*/
 ```
 
-you can also get an image version, if you don't want all of the json info
+you can also get an image version, if you don't want to have to fetch the image separately
 
 ```js
 const FurryBotAPI = require("furrybotapi");
@@ -67,7 +67,17 @@ const fs = require("fs");
 
 const fb = new FurryBotAPI("FurryBotAPI/1.0.3 (https://github.com/FurryBotCo/FurryBotAPI)");
 
-fb.apiRequest("furry", true, "hug", false).then(res => fs.writeFileSync(`${__dirname}/image.png`, res));
+fb.apiRequest("furry", true, "hug", false).then(res => fs.writeFileSync(`${__dirname}/image.png`, res.image));
+/*
+this function returns an object like this:
+{
+	"image": (Buffer),
+	"imageFileType": "jpg",
+	"imageURL": "https://i.furcdn.net/furry/sfw/hug/3545-25333-18564.jpg",
+	"imageName": "3545-25333-18564.jpg"
+}
+*/
+
 // look at "image.png" that should be next to the file this was ran in
 ```
 

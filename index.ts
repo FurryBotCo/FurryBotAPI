@@ -17,6 +17,13 @@ interface JSONResponse {
 	};
 }
 
+interface NonJSONResponse {
+	image: Buffer;
+	imageName: string;
+	imageFileType: string;
+	imageURL: string;
+}
+
 type AnimalTypes = "birb" | "blep" | "cheeta" | "fox" | "lynx" | "wolf";
 type SFWFurryTypes = "boop" | "cuddle" | "flop" | "fursuit" | "hold" | "howl" | "hug" | "kiss" | "lick" | "propose";
 type NSFWFurryTypes = "bang" | "bulge" | "cuddle" | "group" | "hug" | "kiss" | "lick" | "suck" | "yiff" | "yiff/dickgirl" | "yiff/gay" | "yiff/lesbian" | "yiff/straight";
@@ -27,10 +34,10 @@ class FurryBotAPI {
 		this.userAgent = userAgent;
 	}
 
-	apiRequest(category: "animals", sfw: true, path: AnimalTypes, json: false): Promise<Buffer>;
-	apiRequest(category: "furry", sfw: true, path: SFWFurryTypes, json: false): Promise<Buffer>;
-	apiRequest(category: "furry", sfw: false, path: NSFWFurryTypes, json: false): Promise<Buffer>;
-	apiRequest(category: string, sfw: boolean, path: string, json: false): Promise<Buffer>;
+	apiRequest(category: "animals", sfw: true, path: AnimalTypes, json: false): Promise<NonJSONResponse>;
+	apiRequest(category: "furry", sfw: true, path: SFWFurryTypes, json: false): Promise<NonJSONResponse>;
+	apiRequest(category: "furry", sfw: false, path: NSFWFurryTypes, json: false): Promise<NonJSONResponse>;
+	apiRequest(category: string, sfw: boolean, path: string, json: false): Promise<NonJSONResponse>;
 
 	apiRequest(category: "animals", sfw: true, path: AnimalTypes, json: true): Promise<JSONResponse>;
 	apiRequest(category: "furry", sfw: true, path: SFWFurryTypes, json: true): Promise<JSONResponse>;
@@ -49,7 +56,13 @@ class FurryBotAPI {
 
 		if (p.statusCode !== 200) throw new APIError(`${p.statusCode} ${p.statusMessage}`, `api request to "https://api.furry.bot/${category.toLowerCase()}${category === "animals" ? `${sfw ? "/sfw" : "/nsfw"}` : ""}/${path.toLowerCase()}" returned a non 200 OK status.`, json ? p.body : p.body.toString());
 
-		else return p.body;
+		if (json) return p.body;
+		else return {
+			image: p.body,
+			imageFileType: p.headers["x-furrybotapi-filetype"],
+			imageURL: p.headers["x-furrybotapi-imageurl"],
+			imageName: p.headers["x-furrybotapi-name"]
+		};
 	}
 
 	getCounts(): Promise<{
