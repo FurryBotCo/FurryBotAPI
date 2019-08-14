@@ -1,0 +1,36 @@
+{
+  "name": "furrybotapi",
+  "version": "1.69.0",
+  "description": "Official api wrapper for api.furry.bot.",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "scripts": {
+    "test": "",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FurryBotCo/FurryBotAPI.git"
+  },
+  "keywords": [
+    "furrybot",
+    "furrybotapi",
+    "furrybot-api",
+    "api",
+    "furry"
+  ],
+  "author": "Donovan_DMC",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/FurryBotCo/FurryBotAPI/issues"
+  },
+  "homepage": "https://github.com/FurryBotCo/FurryBotAPI#readme",
+  "dependencies": {
+    "phin": "^3.4.0"
+  },
+  "devDependencies": {
+    "@types/phin": "^3.3.0",
+    "tsconfig-paths": "^3.8.0",
+    "typescript": "^3.5.3"
+  }
+}
