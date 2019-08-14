@@ -5,6 +5,7 @@
 * All image are HAND PICKED by the api creator, [Donovan_DMC](https://furry.cool) (note: if you find an image that seems out of place, report it in [our Discord server](https://discord.gg/YazeA7e), I try to do my best, but I'm not perfect!)
 * The api has multiple instances running, so requests are solved fast, even when there are many people accessing the api at one time!
 * Everything is served from our cdn ([furcdn.net](https://furcdn.net))
+* [99.9% uptime](https://status.api.furry.bot/)
 
 ### This is the **only** official api wrapper for [api.furry.bot](https://apidocs.furry.bot), with special typescript support for all endpoints!
 
@@ -16,7 +17,7 @@ The parameters of the main function (apiRequest) are, in order: category, sfw, s
 * The valid entries for "category" are "furry" and "animals"<br>
 * The "sfw" parameter is just a true/false, only valid for the "furry" category.<br>
 * The valid entries for "subcategory" are listed in the [api documentation](https://apidocs.furry.bot), and [here](#list-of-endpoints)
-* The "json" parameter is once again, a true/false, if false, it will return an image as a buffer, else it will return a json object, structured like this:
+* The "json" parameter is once again, a true/false, if true it will return a json object, structured like this:
 ```json
 {
 	"success": true,
@@ -25,6 +26,16 @@ The parameters of the main function (apiRequest) are, in order: category, sfw, s
 		"filetype": "extension of the 'image' key",
 		"name": "name of the image in the 'image' key"
 	}
+}
+```
+if false, it will return an object structured like this:
+
+```json
+{
+	"image": (ImageBuffer),
+	"imageFileType": "extension of the image",
+	"imageURL": "the cdn url of the image",
+	"imageName": "the name of the image"
 }
 ```
 
@@ -36,14 +47,14 @@ const FurryBotAPI = require("furrybotapi");
 const fb = new FurryBotApi("user-agent-string");
 
 // if you don't know how to setup a user agent string, the typical method is PackageName/PackageVersion (Github/Website URL),
-// ex: FurryBotAPI/69.420.621-stable.1.0.6 (https://github.com/FurryBotCo/FurryBotAPI)
+// ex: FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)
 ```
 
 All of the methods that are accessable throught direct requests to the [api](https://apidocs.furry.bot) are accessable here, here's an example for the [animals](https://apidocs.furry.bot/animals/) category:
 ```js
 const FurryBotAPI = require("furrybotapi");
 
-const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.6 (https://github.com/FurryBotCo/FurryBotAPI)");
+const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)");
 
 // category, sfw, subcategory, json
 fb.apiRequest("animals", true, "blep", true).then(res => console.log(res));
@@ -65,7 +76,7 @@ you can also get an image version, if you don't want to have to fetch the image 
 const FurryBotAPI = require("furrybotapi");
 const fs = require("fs");
 
-const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.6 (https://github.com/FurryBotCo/FurryBotAPI)");
+const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)");
 
 fb.apiRequest("furry", true, "hug", false).then(res => fs.writeFileSync(`${__dirname}/image.png`, res.image));
 /*
@@ -86,7 +97,7 @@ if something has multiple subcategories, like yiff/gay, yiff/straight, etc, you 
 ```js
 const FurryBotAPI = require("furrybotapi");
 
-const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.6 (https://github.com/FurryBotCo/FurryBotAPI)");
+const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)");
 
 // category, sfw, subcategory, json
 fb.apiRequest("furry", false, "yiff/gay", true).then(res => console.log(res));
@@ -107,7 +118,7 @@ you can also fetch the number of images in a category
 ```js
 const FurryBotAPI = require("furrybotapi");
 
-const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.6 (https://github.com/FurryBotCo/FurryBotAPI)");
+const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)");
 
 fb.getCounts().then(res => console.log(res));
 
