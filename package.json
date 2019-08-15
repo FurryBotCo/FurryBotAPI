@@ -1,11 +1,11 @@
 {
   "name": "furrybotapi",
-  "version": "69.420.621-stable.1.0.7",
+  "version": "1.0.0",
   "description": "Official api wrapper for api.furry.bot.",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "rimraf src && tslint -c tslint.json -p . *.ts && tsc"
   },
   "repository": {
     "type": "git",
@@ -29,7 +29,9 @@
   },
   "devDependencies": {
     "@types/phin": "^3.3.0",
+    "rimraf": "^3.0.0",
     "tsconfig-paths": "^3.8.0",
+    "tslint": "^5.18.0",
     "typescript": "^3.5.3"
   }
 }

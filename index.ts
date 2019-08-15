@@ -1,5 +1,6 @@
 import phin from "phin";
 import util from "util";
+import pkg from "./package.json";
 
 class APIError extends Error {
 	constructor(err: string, message: string, response: any) {
@@ -30,7 +31,7 @@ type NSFWFurryTypes = "bang" | "bulge" | "cuddle" | "group" | "hug" | "kiss" | "
 
 class FurryBotAPI {
 	userAgent: string;
-	constructor(userAgent: string) {
+	constructor(userAgent = `FurryBotAPI/${pkg.version} (https://github.com/FurryBotCo/FurryBotAPI)`) {
 		this.userAgent = userAgent;
 	}
 

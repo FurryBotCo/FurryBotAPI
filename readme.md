@@ -47,14 +47,14 @@ const FurryBotAPI = require("furrybotapi");
 const fb = new FurryBotApi("user-agent-string");
 
 // if you don't know how to setup a user agent string, the typical method is PackageName/PackageVersion (Github/Website URL),
-// ex: FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)
+// ex: FurryBotAPI/1.0.0 (https://github.com/FurryBotCo/FurryBotAPI)
 ```
 
 All of the methods that are accessable throught direct requests to the [api](https://apidocs.furry.bot) are accessable here, here's an example for the [animals](https://apidocs.furry.bot/animals/) category:
 ```js
 const FurryBotAPI = require("furrybotapi");
 
-const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)");
+const fb = new FurryBotAPI("FurryBotAPI/1.0.0 (https://github.com/FurryBotCo/FurryBotAPI)");
 
 // category, sfw, subcategory, json
 fb.apiRequest("animals", true, "blep", true).then(res => console.log(res));
@@ -64,7 +64,7 @@ fb.apiRequest("animals", true, "blep", true).then(res => console.log(res));
 	response:
 	{
 		image: "https://i.furcdn.net/animals/blep/tumblr_pdquqhcfsA1va8n3bo1_500.jpg",
-    	filetype: "jpg",
+		filetype: "jpg",
 		name: "tumblr_pdquqhcfsA1va8n3bo1_500.jpg"
 	}
 }*/
@@ -76,7 +76,7 @@ you can also get an image version, if you don't want to have to fetch the image 
 const FurryBotAPI = require("furrybotapi");
 const fs = require("fs");
 
-const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)");
+const fb = new FurryBotAPI("FurryBotAPI/1.0.0 (https://github.com/FurryBotCo/FurryBotAPI)");
 
 fb.apiRequest("furry", true, "hug", false).then(res => fs.writeFileSync(`${__dirname}/image.png`, res.image));
 /*
@@ -97,7 +97,7 @@ if something has multiple subcategories, like yiff/gay, yiff/straight, etc, you 
 ```js
 const FurryBotAPI = require("furrybotapi");
 
-const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)");
+const fb = new FurryBotAPI("FurryBotAPI/1.0.0 (https://github.com/FurryBotCo/FurryBotAPI)");
 
 // category, sfw, subcategory, json
 fb.apiRequest("furry", false, "yiff/gay", true).then(res => console.log(res));
@@ -107,7 +107,7 @@ fb.apiRequest("furry", false, "yiff/gay", true).then(res => console.log(res));
 	response:
 	{
 		image: "https://i.furcdn.net/furry/nsfw/yiff/gay/806028389_85499.jpg",
-    	filetype: "jpg",
+		filetype: "jpg",
 		name: "806028389_85499.jpg"
 	}
 }*/
@@ -118,7 +118,7 @@ you can also fetch the number of images in a category
 ```js
 const FurryBotAPI = require("furrybotapi");
 
-const fb = new FurryBotAPI("FurryBotAPI/69.420.621-stable.1.0.7 (https://github.com/FurryBotCo/FurryBotAPI)");
+const fb = new FurryBotAPI("FurryBotAPI/1.0.0 (https://github.com/FurryBotCo/FurryBotAPI)");
 
 fb.getCounts().then(res => console.log(res));
 
