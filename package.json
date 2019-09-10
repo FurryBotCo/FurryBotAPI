@@ -1,6 +1,6 @@
 {
   "name": "furrybotapi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official api wrapper for api.furry.bot.",
   "main": "src/index.js",
   "types": "src/index.d.ts",
@@ -19,7 +19,7 @@
     "furry"
   ],
   "author": "Donovan_DMC",
-  "license": "AGPL-3.0",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/FurryBotCo/FurryBotAPI/issues"
   },
