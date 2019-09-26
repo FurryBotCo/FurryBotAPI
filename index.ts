@@ -46,13 +46,15 @@ class FurryBotAPI {
 	apiRequest(category: string, sfw: boolean, path: string, json: true): Promise<JSONResponse>;
 
 	async apiRequest(category = "furry", sfw = false, path = "hug", json = true) {
+		// console.log(`https://api.furry.bot/${category.toLowerCase()}${category === "furry" ? `${sfw ? "/sfw" : "/nsfw"}` : ""}/${path.toLowerCase()}${!json ? "/image" : ""}`);
 		const p = await phin({
 			method: "GET",
 			url: `https://api.furry.bot/${category.toLowerCase()}${category === "furry" ? `${sfw ? "/sfw" : "/nsfw"}` : ""}/${path.toLowerCase()}${!json ? "/image" : ""}`,
 			parse: json ? "json" : "none",
 			headers: {
 				"User-Agent": this.userAgent
-			}
+			},
+			followRedirects: true
 		}) as phin.JsonResponse | phin.BufferResponse;
 
 		if (p.statusCode !== 200) throw new APIError(`${p.statusCode} ${p.statusMessage}`, `api request to "https://api.furry.bot/${category.toLowerCase()}${category === "animals" ? `${sfw ? "/sfw" : "/nsfw"}` : ""}/${path.toLowerCase()}" returned a non 200 OK status.`, json ? p.body : p.body.toString());
@@ -91,6 +93,7 @@ class FurryBotAPI {
 			headers: {
 				"User-Agent": this.userAgent
 			},
+			followRedirects: true,
 			parse: "json"
 		}).then(res => res.body);
 	}

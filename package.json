@@ -1,11 +1,12 @@
 {
   "name": "furrybotapi",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Official api wrapper for api.furry.bot.",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "scripts": {
-    "prepare": "rimraf src && tslint -c tslint.json -p . *.ts && tsc"
+    "prepare": "rimraf src && tslint -c tslint.json -p . *.ts && tsc",
+    "build": "npm run prepare"
   },
   "repository": {
     "type": "git",
