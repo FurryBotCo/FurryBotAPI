@@ -24,8 +24,8 @@ export default class Animals implements ImageEndpoints<AnimalEndpoints> {
 		if (!cat) throw new TypeError("missing category");
 		if (!method) method = "json";
 		method = method.toLowerCase() as any;
-		if (["image"].includes(method) && amount && amount > 1) throw new TypeError("Ammount cannot be greater than one when requesting an image or stream.");
-		if (amount && amount > 5) throw new TypeError("Ammount cannot be greater than five.");
+		if (["image"].includes(method) && amount && amount > 1) throw new TypeError("Amount cannot be greater than one when requesting an image or stream.");
+		if (amount && amount > 5) throw new TypeError("Amount cannot be greater than five.");
 
 		const h: { Authorization?: string; } = {};
 		if (this.options.apiKey) h.Authorization = this.options.apiKey;
