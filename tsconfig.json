@@ -1,13 +1,15 @@
 {
     "$schema": "http://json.schemastore.org/tsconfig",
     "compilerOptions": {
-        "outDir": "src",
+        "outDir": "./build",
         "target": "es2017",
         "baseUrl": "src",
         "resolveJsonModule": true,
         "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
         "moduleResolution": "node",
         "module": "commonjs",
+        "paths": {},
         "declaration": true
     },
     "include": [
@@ -15,6 +17,10 @@
     ],
     "exclude": [
         "node_modules",
-        "build"
+        "build",
+        "out",
+        "test",
+        "tmp",
+        "logs"
     ]
 }

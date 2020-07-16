@@ -62,4 +62,5 @@ typings/
 
 # extra stuff
 test/
-src/
+build/
+src - Copy/
