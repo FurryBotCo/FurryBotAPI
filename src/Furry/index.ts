@@ -26,7 +26,7 @@ export default class Furry implements ImageEndpoints<FurryEndpoints> {
 		if (!method) method = "json";
 		method = method.toLowerCase() as any;
 		if (["image"].includes(method) && amount && amount > 1) throw new TypeError("Ammount cannot be greater than one when requesting an image or stream.");
-		if (amount && amount > 5) throw new TypeError("Ammount cannot be greater than five.");
+		if (amount && amount > 5) throw new TypeError("Amount cannot be greater than five.");
 
 		switch (method) {
 			case "image": {
