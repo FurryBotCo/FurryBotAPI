@@ -14,13 +14,13 @@
 ### If you are building this module from scratch, you will need to build it using `npm run build`, this will put the js files you need in the `src` folder. (you will need typescript to be installed globally (npm i -g typescript) to use the typescript compiler) 
 
 Requests on the default api are converted to methods by replacing forward slashes with periods.
-ex
-https://api.furry.bot/V2/animals/birb -> animals.birb()
-https://api.furry.bot/V2/furry/hug -> furry.hug()
-https://api.furry.bot/V2/furry/yiff/gay -> furry.yiff.gay()
+ex  
+https://api.furry.bot/V2/animals/birb -> animals.birb()  
+https://api.furry.bot/V2/furry/hug -> furry.hug()  
+https://api.furry.bot/V2/furry/yiff/gay -> furry.yiff.gay()  
 
 this module can return an image, or 1-5 json responses.
-### image:
+### Image:
 ```ts
 import FurryBotAPI from "furrybotapi";
 import * as fs from "fs";
