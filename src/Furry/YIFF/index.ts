@@ -1,11 +1,10 @@
 import { USER_AGENT, API_URL, API_VERSION, API_HEADERS } from "../../util/Constants";
-import { JSONResponse, ImageResponse, f, YiffEndpoints, ImageEndpoints, Options } from "../../typings";
-import chunk from "../../util/chunk";
+import { JSONResponse, ImageResponse, f, YiffEndpoints, Options } from "../../typings";
 import ErrorHandler from "../../util/ErrorHandler";
 import { performance } from "perf_hooks";
 import get from "../../util/get";
 
-export default class YIFF implements ImageEndpoints<YiffEndpoints> {
+export default class YIFF {
 	options: Options;
 	constructor(d?: Partial<Options>) {
 		if (!d) d = {};
@@ -17,10 +16,10 @@ export default class YIFF implements ImageEndpoints<YiffEndpoints> {
 		};
 	}
 
-	async sendRequest(cat: YiffEndpoints, method: "image"): Promise<ImageResponse>;
-	async sendRequest(cat: YiffEndpoints, method: "json", amount: 1): Promise<JSONResponse>;
-	async sendRequest(cat: YiffEndpoints, method: "json", amount?: 2 | 3 | 4 | 5): Promise<JSONResponse[]>;
-	async sendRequest(cat: YiffEndpoints, method?: "image" | "json", amount?: 1 | 2 | 3 | 4 | 5): Promise<JSONResponse[] | JSONResponse | ImageResponse> {
+	private async sendRequest(cat: YiffEndpoints, method: "image"): Promise<ImageResponse>;
+	private async sendRequest(cat: YiffEndpoints, method: "json", amount: 1): Promise<JSONResponse>;
+	private async sendRequest(cat: YiffEndpoints, method: "json", amount?: 2 | 3 | 4 | 5): Promise<JSONResponse[]>;
+	private async sendRequest(cat: YiffEndpoints, method?: "image" | "json", amount?: 1 | 2 | 3 | 4 | 5): Promise<JSONResponse[] | JSONResponse | ImageResponse> {
 		if (!cat) throw new TypeError("missing category");
 		if (!method) method = "json";
 		method = method.toLowerCase() as any;

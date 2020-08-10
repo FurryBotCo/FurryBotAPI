@@ -40,13 +40,6 @@ declare namespace FurryBotAPI {
 		image: Buffer;
 	}
 
-
-	interface ImageEndpoints<T> {
-		sendRequest(cat: T, method?: "image"): Promise<ImageResponse>;
-		sendRequest(cat: T, method?: "json", amount?: number): Promise<JSONResponse[]>;
-		sendRequest(cat: T, method?: "image" | "json", amount?: number): Promise<JSONResponse[] | ImageResponse>;
-	}
-
 	interface E621Post {
 		id: number;
 		tags: string;
