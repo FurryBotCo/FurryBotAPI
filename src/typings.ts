@@ -31,7 +31,8 @@ declare namespace FurryBotAPI {
 		url: string;
 		type: string;
 		name: string;
-		shorturl: string;
+		shortURL: string;
+		reportURL: string;
 		ext: string;
 	}
 

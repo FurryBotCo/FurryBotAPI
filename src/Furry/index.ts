@@ -45,11 +45,12 @@ export default class Furry {
 					width: 0,
 					height: 0,
 					url: "",
-					shorturl: "",
+					shortURL: "",
+					reportURL: "",
 					type: "",
 					name: "",
 					ext: ""
-				};
+				} as JSONResponse;
 
 				Object.keys(r.headers).map((h: string) => {
 					if (Object.values(API_HEADERS).includes(h[0])) {
