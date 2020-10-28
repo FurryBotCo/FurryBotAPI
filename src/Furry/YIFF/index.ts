@@ -98,8 +98,12 @@ export default class YIFF {
 		}
 	}
 
-	get dickgirl(): typeof f { return this.sendRequest.bind(this, "dickgirl"); }
+	/**
+	 * @deprecated Use gynomorph instead, this method will be removed eventually.
+	 */
+	get dickgirl(): typeof f { return this.sendRequest.bind(this, "gynomorph"); }
 	get gay(): typeof f { return this.sendRequest.bind(this, "gay"); }
+	get gynomorph(): typeof f { return this.sendRequest.bind(this, "gynomorph"); }
 	get lesbian(): typeof f { return this.sendRequest.bind(this, "lesbian"); }
 	get straight(): typeof f { return this.sendRequest.bind(this, "straight"); }
 

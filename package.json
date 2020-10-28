@@ -1,6 +1,6 @@
 {
   "name": "furrybotapi",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "Official api wrapper for api.furry.bot.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
