@@ -1,3 +1,11 @@
+# This module has been deprecated!
+## API changes have made this module obsolete, please switch to [Yiffy](https://github.com/FurryBotCo/Yiffy)
+<br>
+<br>
+<hr>
+<br>
+<br>
+
 ## <center>Furry Bot API</center>
 
 ### Advantages of this api:
